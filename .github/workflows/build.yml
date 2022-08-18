@@ -36,7 +36,7 @@ jobs:
     steps:
     - name: Lowercase owner name
       run: |
-        echo "OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> ${GITHUB_ENV}
+        echo OWNER=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
 
     - name: Checkout Code
       uses: actions/checkout@v3
@@ -87,7 +87,7 @@ jobs:
     - name: Dockle scan
       uses: erzz/dockle-action@v1.3.1
       with:
-        image: "ghcr.io/${ env.OWNER }/${{ env.IMAGE_STAGING }}:${{ matrix.tags[0] }}"
+        image: "ghcr.io/${{ env.OWNER }}/${{ env.IMAGE_STAGING }}:${{ matrix.tags[0] }}"
         exit-code: '1'
         failure-threshold: WARN
         accept-keywords: key
