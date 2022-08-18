@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_STAGING: cloudnative-pg/postgresql-testing
-  IMAGE_RELEASE: cloudnative-pg/postgresql
+  IMAGE_STAGING: "${{ github.repository_owner }}/pgroona-testing"
+  IMAGE_RELEASE: "${{ github.repository_owner }}/pgroona"
 
 jobs:
   generate-jobs:

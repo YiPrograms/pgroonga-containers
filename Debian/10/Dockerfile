@@ -14,15 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # 
-FROM postgres:10.22-bullseye
+FROM groonga/pgroonga:latest-debian-10
 
 # Do not split the description, otherwise we will see a blank space in the labels
-LABEL name="PostgreSQL Container Images" \
+LABEL name="PostgreSQL Container Images with pgroona" \
       vendor="The CloudNativePG Contributors" \
       version="${PG_VERSION}" \
-      release="2" \
       summary="PostgreSQL Container images." \
-      description="This Docker image contains PostgreSQL and Barman Cloud based on Postgres 10.22-bullseye."
+      description="This Docker image contains PostgreSQL and Barman Cloud with Pgroona based on Postgres ${PG_MAJOR}."
 
 COPY requirements.txt /
 
