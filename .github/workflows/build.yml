@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_STAGING: "pgroona-testing"
-  IMAGE_RELEASE: "pgroona"
+  IMAGE_STAGING: "pgroonga-testing"
+  IMAGE_RELEASE: "pgroonga"
 
 jobs:
   generate-jobs:
@@ -83,7 +83,7 @@ jobs:
     - name: Dockle scan
       uses: erzz/dockle-action@v1.3.1
       with:
-        image: "ghcr.io/${{ env.IMAGE_STAGING }}:${{ matrix.tags[0] }}"
+        image: "ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/${{ env.IMAGE_STAGING }}:${{ matrix.tags[0] }}"
         exit-code: '1'
         failure-threshold: WARN
         accept-keywords: key
